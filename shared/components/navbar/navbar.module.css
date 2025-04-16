@@ -1,9 +1,15 @@
+tr:hover {
+  background: none;
+}
 
+td:hover {
+  background: none;
+}
 
-/* 
-.hovercard{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  row-gap: 20px;
-  column-gap: 0;
-} */
+.kidsTable {
+  [data-slot="table-container"] {
+    display: flex;
+    justify-content: end;
+  }
+}
+

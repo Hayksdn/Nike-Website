@@ -15,7 +15,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../components/ui/table"
+} from "../../../components/ui/table";
+import { Container } from "../layout/container";
 
 type MenuItem = {
   name: string;
@@ -356,6 +357,16 @@ const NavBar = () => {
         ],
       },
       {
+        section: { name: "Training", href: "#" },
+        items: [
+          { name: "Shoes", href: "#" },
+          { name: "Socks", href: "#" },
+          { name: "Apparel", href: "#" },
+          { name: "Equipment", href: "#" },
+        ],
+      },
+
+      {
         section: { name: "Running", href: "#" },
         items: [
           { name: "Road", href: "#" },
@@ -366,6 +377,17 @@ const NavBar = () => {
           { name: "Equipment", href: "#" },
           { name: "Stride & Swift Collection", href: "#" },
           { name: "Running Shoe Finder", href: "#" },
+        ],
+      },
+
+      {
+        section: { name: "Golf", href: "#" },
+        items: [
+          { name: "Fairway Ready", href: "#" },
+          { name: "Shoes", href: "#" },
+          { name: "Apparel", href: "#" },
+          { name: "Equipment", href: "#" },
+          { name: "Jordan", href: "#" },
         ],
       },
       {
@@ -397,25 +419,6 @@ const NavBar = () => {
           { name: "Wrestling", href: "#" },
         ],
       },
-      {
-        section: { name: "Training", href: "#" },
-        items: [
-          { name: "Shoes", href: "#" },
-          { name: "Socks", href: "#" },
-          { name: "Apparel", href: "#" },
-          { name: "Equipment", href: "#" },
-        ],
-      },
-      {
-        section: { name: "Golf", href: "#" },
-        items: [
-          { name: "Fairway Ready", href: "#" },
-          { name: "Shoes", href: "#" },
-          { name: "Apparel", href: "#" },
-          { name: "Equipment", href: "#" },
-          { name: "Jordan", href: "#" },
-        ],
-      },
     ],
   };
   const fullMenu: Menu[] = [
@@ -428,112 +431,297 @@ const NavBar = () => {
   ];
 
   return (
-    <div
-      className={`p-4 px-[3.8rem] flex flex-row gap-[20rem] relative w-full ${css.navbar}`}
-    >
-      <NikeIcon />
+    <Container size="containerFull" >
+      <div className=" px-[3.8rem] flex flex-row gap-[20rem]  w-full max-w-[1920px]  mx-auto ">
+        <Link href="/" className="h-fit pt-[1rem]">
+          <NikeIcon />
+        </Link>
 
-      <div className="flex flex-row  gap-[2rem] ">
-        {fullMenu.map((menu) => {
-          return (
-            <HoverCard open={true} key={menu.title.name}>
-              <HoverCardTrigger
-                href={menu.title.href}
-                className=" font-medium hover:underline underline-offset-[0.47rem] "
-              >
-                {menu.title.name}
-              </HoverCardTrigger>
+        <div className="flex flex-row  ">
+          {fullMenu.map((menu) => {
+            return (
+              <HoverCard key={menu.title.name}>
+                <HoverCardTrigger
+                  href={menu.title.href}
+                  className=" font-medium hover:underline underline-offset-[0.47rem] pt-[1rem] pr-[1rem]"
+                >
+                  {menu.title.name}
+                </HoverCardTrigger>
 
-              {/* {(menu.title.name === "New" ||
-                menu.title.name === "Men" ||
-                menu.title.name === "Women") && (
-                <HoverCardContent className="py-[3rem] flex flex-row justify-center gap-[8rem]">
-                  {menu.sections.map((section) => (
-                    <div
-                      key={section.section.name}
-                      className="flex flex-col gap-[0.5rem]"
-                    >
-                      <Link href={section.section.href}>
-                        {section.section.name}
-                      </Link>
-                      {section.items.map((item) => (
-                        <Link
-                          key={item.name}
-                          href={item.href}
-                          className="text-sm text-gray-700 hover:text-black text-[0.75rem]"
-                        >
-                          {item.name}
+                {(menu.title.name === "New" ||
+                  menu.title.name === "Men" ||
+                  menu.title.name === "Women") && (
+                  <HoverCardContent className="py-[3rem] flex flex-row justify-center gap-[8rem]  border-none shadow-none">
+                    {menu.sections.map((section) => (
+                      <div
+                        key={section.section.name}
+                        className="flex flex-col gap-[0.5rem]"
+                      >
+                        <Link href={section.section.href}>
+                          {section.section.name}
                         </Link>
+                        {section.items.map((item) => (
+                          <Link
+                            key={item.name}
+                            href={item.href}
+                            className="text-sm text-muted-foreground  hover:text-foreground text-[0.75rem]"
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
+                    ))}
+                  </HoverCardContent>
+                )}
+
+                {menu.title.name === "Kids" && (
+                  <HoverCardContent className="flex justify-center w-full flex-col pt-[3rem] pb-[2rem] border-none shadow-none">
+                    <div className="flex gap-[2rem]  max-w-[1000px] mx-auto  flex-col ">
+                      <Table className="table-fixed w-fit mx-auto border-separate  ">
+                        <TableHeader>
+                          <TableRow>
+                            {menu.sections.slice(0, 4).map((section) => {
+                              return (
+                                <TableHead
+                                  key={section.section.name}
+                                  className="pr-[5rem] "
+                                >
+                                  <Link href={section.section.href}>
+                                    {section.section.name}
+                                  </Link>
+                                </TableHead>
+                              );
+                            })}
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          <TableRow>
+                            {menu.sections.slice(0, 4).map((section) => (
+                              <TableCell
+                                key={section.section.name}
+                                className="font-medium align-top pt-[0.3rem]"
+                              >
+                                <div className="flex flex-col gap-[0.6rem]">
+                                  {section.items.map((item) => (
+                                    <Link
+                                      key={item.name}
+                                      href={item.href}
+                                      className="text-sm text-muted-foreground  hover:text-foreground text-[0.75rem]"
+                                    >
+                                      {item.name}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </TableCell>
+                            ))}
+                          </TableRow>
+                        </TableBody>
+                      </Table>
+
+                      <div
+                        className={`w-full flex justify-end h-fit ${css.kidsTable}`}
+                      >
+                        <Table className="table-fixed w-fit  border-separate m-0 h-fit ">
+                          <TableHeader>
+                            <TableRow>
+                              {menu.sections.slice(4).map((section) => {
+                                return (
+                                  <TableHead
+                                    key={section.section.name}
+                                    className="pr-[5.4rem]  "
+                                  >
+                                    <Link href={section.section.href}>
+                                      {section.section.name}
+                                    </Link>
+                                  </TableHead>
+                                );
+                              })}
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            <TableRow>
+                              {menu.sections.slice(4).map((section) => (
+                                <TableCell
+                                  key={section.section.name}
+                                  className="font-medium align-top pt-[0.3rem]"
+                                >
+                                  <div className="flex flex-col gap-[0.6rem]">
+                                    {section.items.map((item) => (
+                                      <Link
+                                        key={item.name}
+                                        href={item.href}
+                                        className="text-sm text-muted-foreground  hover:text-foreground text-[0.75rem]"
+                                      >
+                                        {item.name}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </TableCell>
+                              ))}
+                            </TableRow>
+                          </TableBody>
+                        </Table>
+                      </div>
+                    </div>
+                  </HoverCardContent>
+                )}
+
+                {menu.title.name === "Jordan" && (
+                  <HoverCardContent className="flex justify-center w-full flex-col border-none shadow-none pt-[3rem]">
+                    <div className="flex gap-0 w-[1200px] mx-auto  flex-col ">
+                      <Table className="table-fixed w-fit border-separate ">
+                        <TableHeader>
+                          <TableRow>
+                            {menu.sections.slice(0, 5).map((section) => {
+                              return (
+                                <TableHead
+                                  key={section.section.name}
+                                  className="pr-[10rem] "
+                                >
+                                  <Link href={section.section.href}>
+                                    {section.section.name}
+                                  </Link>
+                                </TableHead>
+                              );
+                            })}
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          <TableRow>
+                            {menu.sections.slice(0, 5).map((section) => (
+                              <TableCell
+                                key={section.section.name}
+                                className="font-medium align-top pt-[0.3rem]"
+                              >
+                                <div className="flex flex-col gap-[0.6rem]">
+                                  {section.items.map((item) => (
+                                    <Link
+                                      key={item.name}
+                                      href={item.href}
+                                      className="text-sm text-muted-foreground  hover:text-foreground text-[0.75rem]"
+                                    >
+                                      {item.name}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </TableCell>
+                            ))}
+                          </TableRow>
+                        </TableBody>
+                      </Table>
+
+                      {menu.sections.slice(5).map((section) => (
+                        <div
+                          key={section.section.name}
+                          className="flex flex-col gap-[0.5rem]"
+                        >
+                          <Link
+                            href={section.section.href}
+                            className="text-[0.875rem] font-medium"
+                          >
+                            {section.section.name}
+                          </Link>
+                          {section.items.map((item) => (
+                            <Link
+                              key={item.name}
+                              href={item.href}
+                              className="text-sm text-muted-foreground  hover:text-foreground text-[0.75rem]"
+                            >
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
                       ))}
                     </div>
-                  ))}
-                </HoverCardContent>
-              )} */}
+                  </HoverCardContent>
+                )}
 
-              {menu.title.name === "Kids" && (
-              <HoverCardContent className="flex justify-center w-full  ">
-                
-<Table className="table-fixed w-fit mx-auto border-separate ">
-  <TableHeader  >
-    <TableRow >
-      {menu.sections.slice(0, 4).map((section)=>{
-        return (
-          <TableHead className="pr-[5rem]">{section.section.name}</TableHead>
+                {menu.title.name === "Sport" && (
+                  <HoverCardContent className="flex justify-center w-full flex-row gap-[10rem] pt-[3rem] pb-[2rem] border-none shadow-none">
+                    <div className="flex flex-col gap-[3.5rem] ">
+                      {menu.sections.slice(0, 2).map((section) => (
+                        <div
+                          key={section.section.name}
+                          className="flex flex-col gap-[0.5rem]"
+                        >
+                          <Link
+                            href={section.section.href}
+                            className="text-[0.875rem] font-medium"
+                          >
+                            {section.section.name}
+                          </Link>
+                          {section.items.map((item) => (
+                            <Link
+                              key={item.name}
+                              href={item.href}
+                              className="text-sm text-muted-foreground  hover:text-foreground text-[0.75rem]"
+                            >
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
 
-        )
-      })}
-      
-    </TableRow>
-  </TableHeader>
-  <TableBody>
-    <TableRow>
-      {menu.sections.slice(0, 4).map((section) => (
-        <TableCell key={section.section.name} className="font-medium align-top ">
-          <div className="flex flex-col gap-1">
-            {section.items.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-sm text-gray-700 hover:text-black text-[0.75rem]"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-        </TableCell>
-      ))}
-    </TableRow>
-  </TableBody>
-</Table>
+                    <div className="flex flex-row gap-[5rem] ">
+                      <div className="flex flex-col gap-[3.5rem] ">
+                        {menu.sections.slice(2, 4).map((section) => (
+                          <div
+                            key={section.section.name}
+                            className="flex flex-col gap-[0.5rem]"
+                          >
+                            <Link
+                              href={section.section.href}
+                              className="text-[0.875rem] font-medium"
+                            >
+                              {section.section.name}
+                            </Link>
+                            {section.items.map((item) => (
+                              <Link
+                                key={item.name}
+                                href={item.href}
+                                className="text-sm text-muted-foreground  hover:text-foreground text-[0.75rem]"
+                              >
+                                {item.name}
+                              </Link>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
 
-
-
-              {/* {menu.sections.map((section) => (
-                <div
-                  key={section.section.name}
-                  className="flex flex-col gap-[0.5rem]"
-                >
-                  <Link href={section.section.href}>
-                    {section.section.name}
-                  </Link>
-                  {section.items.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="text-sm text-gray-700 hover:text-black text-[0.75rem]"
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              ))} */}
-            </HoverCardContent>
-              )}
-            </HoverCard>
-          );
-        })}
+                      <div className="flex flex-row gap-[4rem] ">
+                        {menu.sections.slice(4).map((section) => (
+                          <div
+                            key={section.section.name}
+                            className="flex flex-col gap-[0.5rem]"
+                          >
+                            <Link
+                              href={section.section.href}
+                              className="text-[0.875rem] font-medium"
+                            >
+                              {section.section.name}
+                            </Link>
+                            {section.items.map((item) => (
+                              <Link
+                                key={item.name}
+                                href={item.href}
+                                className="text-sm text-muted-foreground  hover:text-foreground text-[0.75rem]"
+                              >
+                                {item.name}
+                              </Link>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </HoverCardContent>
+                )}
+              </HoverCard>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </Container>
   );
 };
 

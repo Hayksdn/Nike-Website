@@ -9,6 +9,7 @@ import {
 } from "../../../components/ui/hover-card";
 import Link from "next/link";
 import css from "./topbar.module.css";
+import { Container } from "../layout/container";
 type SimpleLink = { label: string; href: string };
 type DropdownLink = {
   label: string;
@@ -49,71 +50,75 @@ const TopBar = () => {
     },
   ];
   return (
-    <div className="hidden lg:flex bg-[#f5f5f5] p-2 px-[4rem]  flex-row justify-between  ">
-      <div className="flex flex-row gap-[1.5rem]">
-        <Link href="/jordan">
-          <JordanIcon />
-        </Link>
-        <Link href="/converse">
-          <ConverseIcon />
-        </Link>
-      </div>
+    <div className="hidden lg:flex bg-[#f5f5f5] w-full justify-center ">
+      <Container size="containerFull">
+        <div className=" flex   flex-row justify-between bg-yellow-200 ">
+          <div className="flex flex-row gap-[1.5rem]">
+            <Link href="/jordan">
+              <JordanIcon />
+            </Link>
+            <Link href="/converse">
+              <ConverseIcon />
+            </Link>
+          </div>
 
-      <div className="flex flex-row gap-[1rem] items-center ">
-        <Link
-          href={topLinks[0].href}
-          className="text-[0.75rem] font-medium  hover:text-muted-foreground"
-        >
-          {topLinks[0].label}
-        </Link>
-        <Separator orientation="vertical" className={css.separator} />
+          <div className="flex flex-row gap-[1rem] items-center ">
+            <Link
+              href={topLinks[0].href}
+              className="text-[0.75rem] font-medium  hover:text-muted-foreground"
+            >
+              {topLinks[0].label}
+            </Link>
+            <Separator orientation="vertical" className={css.separator} />
 
-        <HoverCard >
-          <HoverCardTrigger className="text-[0.75rem] font-medium cursor-pointer hover:text-muted-foreground">
-            {dropdownMenu[0].label}
-          </HoverCardTrigger>
-          <HoverCardContent
-            side="bottom"
-            align="end"
-            alignOffset={-24}
-            sideOffset={10}
-            className="!w-[15rem]"
-          >
-            {dropdownMenu.map((menu, index) => (
-              <div key={index} className="flex flex-col gap-[0.6rem]">
-                <p className="text-[1.25rem] font-medium">{menu.label}</p>
-                <div className="flex flex-col gap-[0.5rem] max-w-[8rem]">
-                  {menu.dropdown.map((dropdownItem, dropdownIndex) => (
-                    <Link
-                      key={dropdownIndex}
-                      href={dropdownItem.href}
-                      className="text-muted-foreground text-[0.75rem] w-full hover:text-foreground  "
-                    >
-                      {dropdownItem.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </HoverCardContent>
-        </HoverCard>
-        <Separator orientation="vertical" className={css.separator} />
+            <HoverCard>
+              <HoverCardTrigger className="text-[0.75rem] font-medium cursor-pointer hover:text-muted-foreground">
+                {dropdownMenu[0].label}
+              </HoverCardTrigger>
+              <HoverCardContent
+                side="bottom"
+                align="end"
+                alignOffset={-24}
+                sideOffset={10}
+                className="!w-[15rem]"
+              >
+                {dropdownMenu.map((menu, index) => (
+                  <div key={index} className="flex flex-col gap-[0.6rem]">
+                    <p className="text-[1.25rem] font-medium">{menu.label}</p>
+                    <div className="flex flex-col gap-[0.5rem] max-w-[8rem]">
+                      {menu.dropdown.map((dropdownItem, dropdownIndex) => (
+                        <Link
+                          key={dropdownIndex}
+                          href={dropdownItem.href}
+                          className="text-muted-foreground text-[0.75rem] w-full hover:text-foreground  "
+                        >
+                          {dropdownItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </HoverCardContent>
+            </HoverCard>
+            <Separator orientation="vertical" className={css.separator} />
 
-        <Link
-          href={topLinks[1].href}
-          className="text-[0.75rem] font-medium hover:text-muted-foreground"
-        >
-          {topLinks[1].label}
-        </Link>
-        <Separator orientation="vertical" className={css.separator} />
+            <Link
+              href={topLinks[1].href}
+              className="text-[0.75rem] font-medium hover:text-muted-foreground"
+            >
+              {topLinks[1].label}
+            </Link>
+            <Separator orientation="vertical" className={css.separator} />
 
-        <Link
-          href={topLinks[2].href}
-          className="text-[0.75rem] font-medium  hover:text-muted-foreground"
-        >
-          {topLinks[2].label}
-        </Link>
-      </div>
+            <Link
+              href={topLinks[2].href}
+              className="text-[0.75rem] font-medium  hover:text-muted-foreground"
+            >
+              {topLinks[2].label}
+            </Link>
+          </div>
+        </div>
+      </Container>
     </div>
   );
 };
