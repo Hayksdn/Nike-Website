@@ -16,7 +16,8 @@ import {
   TableHeader,
   TableRow,
 } from "../../../components/ui/table";
-import { Container } from "../layout/container";
+import Container from "../layout/container";
+import SearchBar from "../ui/searchbar";
 
 type MenuItem = {
   name: string;
@@ -431,13 +432,14 @@ const NavBar = () => {
   ];
 
   return (
-    <Container size="containerFull" >
-      <div className=" px-[3.8rem] flex flex-row gap-[20rem]  w-full max-w-[1920px]  mx-auto ">
+    <Container size="default">
+      <div className=" px-[3.8rem] flex flex-row justify-between  w-full max-w-[1920px]  mx-auto  ">
+        <div className="flex flex-row gap-[27rem] ">
         <Link href="/" className="h-fit pt-[1rem]">
           <NikeIcon />
         </Link>
-
-        <div className="flex flex-row  ">
+          
+          <div className='flex justify-center'>
           {fullMenu.map((menu) => {
             return (
               <HoverCard key={menu.title.name}>
@@ -719,7 +721,15 @@ const NavBar = () => {
               </HoverCard>
             );
           })}
+          </div>
+          
         </div>
+       
+
+          <div className="flex flex-row gap-[1rem] justify-center items-center ">
+            <SearchBar/>
+          </div>
+        
       </div>
     </Container>
   );

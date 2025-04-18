@@ -5,7 +5,6 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import TopBar from "@/shared/components/topbar/topbar";
 import NavBar from "@/shared/components/navbar/navbar";
-import { Container } from "@/shared/components/layout/container";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

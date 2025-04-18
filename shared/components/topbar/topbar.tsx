@@ -9,7 +9,7 @@ import {
 } from "../../../components/ui/hover-card";
 import Link from "next/link";
 import css from "./topbar.module.css";
-import { Container } from "../layout/container";
+import Container from "../layout/container";
 type SimpleLink = { label: string; href: string };
 type DropdownLink = {
   label: string;
@@ -51,8 +51,8 @@ const TopBar = () => {
   ];
   return (
     <div className="hidden lg:flex bg-[#f5f5f5] w-full justify-center ">
-      <Container size="containerFull">
-        <div className=" flex   flex-row justify-between bg-yellow-200 ">
+      <Container size="default">
+        <div className=" flex   flex-row justify-between px-[4rem] py-[0.4rem] ">
           <div className="flex flex-row gap-[1.5rem]">
             <Link href="/jordan">
               <JordanIcon />

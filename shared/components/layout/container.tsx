@@ -1,45 +1,30 @@
 import React from "react";
+import clsx from "clsx";
 
-type ContainerSize = "container" | "containerFull" | "containerXS";
+type ContainerSize = "default" | "full" | "small";
 
-type ContainerProps = {
+interface ContainerProps {
+  children: React.ReactNode;
   size?: ContainerSize;
   className?: string;
-  children: React.ReactNode;
+}
+
+const sizeMap: Record<ContainerSize, string> = {
+  default: "max-w-[120rem]",
+  full: "max-w-none",
+  small: "max-w-[60rem]",
 };
 
-const widths = {
-  container: {
-    base: "w-[calc(100%-2.5rem)]",
-    md: "md:w-[calc(100%-5rem)]",
-  },
-  containerFull: {
-    base: "w-[calc(100%-2.5rem)]",
-    md: "md:w-[calc(100%-5rem)]",
-  },
-  containerXS: {
-    base: "w-[calc(100%-2.5rem)]",
-    md: "md:w-[calc(100%-5rem)]",
-  },
-};
-
-const maxWidths = {
-  container: "max-w-[120rem]",     
-  containerFull: "max-w-none",         
-  containerXS: "max-w-[59.375rem]",    
-};
-
-export const Container: React.FC<ContainerProps> = ({
-  size = "container",
-  className = "",
+const Container: React.FC<ContainerProps> = ({
   children,
+  size = "default",
+  className = "",
 }) => {
-  const widthClasses = `${widths[size].base} ${widths[size].md}`;
-  const maxWidthClass = maxWidths[size];
-
   return (
-    <div className={`${widthClasses} ${maxWidthClass}  ${className}`}>
+    <div className={clsx("mx-auto w-full ", sizeMap[size], className)}>
       {children}
     </div>
   );
 };
+
+export default Container;
