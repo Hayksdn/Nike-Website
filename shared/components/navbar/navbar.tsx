@@ -442,7 +442,7 @@ const NavBar = () => {
           <div className='flex justify-center'>
           {fullMenu.map((menu) => {
             return (
-              <HoverCard key={menu.title.name}>
+              <HoverCard key={menu.title.name} >
                 <HoverCardTrigger
                   href={menu.title.href}
                   className=" font-medium hover:underline underline-offset-[0.47rem] pt-[1rem] pr-[1rem]"
@@ -476,7 +476,7 @@ const NavBar = () => {
                   </HoverCardContent>
                 )}
 
-                {menu.title.name === "Kids" && (
+                {/* {menu.title.name === "Kids" && (
                   <HoverCardContent className="flex justify-center w-full flex-col pt-[3rem] pb-[2rem] border-none shadow-none">
                     <div className="flex gap-[2rem]  max-w-[1000px] mx-auto  flex-col ">
                       <Table className="table-fixed w-fit mx-auto border-separate  ">
@@ -717,7 +717,7 @@ const NavBar = () => {
                       </div>
                     </div>
                   </HoverCardContent>
-                )}
+                )} */}
               </HoverCard>
             );
           })}
