@@ -435,48 +435,48 @@ const NavBar = () => {
     <Container size="default">
       <div className=" px-[3.8rem] flex flex-row justify-between  w-full max-w-[1920px]  mx-auto  ">
         <div className="flex flex-row gap-[27rem] ">
-        <Link href="/" className="h-fit pt-[1rem]">
-          <NikeIcon />
-        </Link>
-          
-          <div className='flex justify-center'>
-          {fullMenu.map((menu) => {
-            return (
-              <HoverCard key={menu.title.name} >
-                <HoverCardTrigger
-                  href={menu.title.href}
-                  className=" font-medium hover:underline underline-offset-[0.47rem] pt-[1rem] pr-[1rem]"
-                >
-                  {menu.title.name}
-                </HoverCardTrigger>
+          <Link href="/" className="h-fit pt-[1rem]">
+            <NikeIcon />
+          </Link>
 
-                {(menu.title.name === "New" ||
-                  menu.title.name === "Men" ||
-                  menu.title.name === "Women") && (
-                  <HoverCardContent className="py-[3rem] flex flex-row justify-center gap-[8rem]  border-none shadow-none">
-                    {menu.sections.map((section) => (
-                      <div
-                        key={section.section.name}
-                        className="flex flex-col gap-[0.5rem]"
-                      >
-                        <Link href={section.section.href}>
-                          {section.section.name}
-                        </Link>
-                        {section.items.map((item) => (
-                          <Link
-                            key={item.name}
-                            href={item.href}
-                            className="text-sm text-muted-foreground  hover:text-foreground text-[0.75rem]"
-                          >
-                            {item.name}
+          <div className="flex justify-center">
+            {fullMenu.map((menu) => {
+              return (
+                <HoverCard key={menu.title.name} >
+                  <HoverCardTrigger
+                    href={menu.title.href}
+                    className=" font-medium hover:underline underline-offset-[0.47rem] pt-[1rem] pr-[1rem]"
+                  >
+                    {menu.title.name}
+                  </HoverCardTrigger>
+
+                  {(menu.title.name === "New" ||
+                    menu.title.name === "Men" ||
+                    menu.title.name === "Women") && (
+                    <HoverCardContent className="py-[3rem] flex flex-row justify-center gap-[8rem]  border-none shadow-none">
+                      {menu.sections.map((section) => (
+                        <div
+                          key={section.section.name}
+                          className="flex flex-col gap-[0.5rem]"
+                        >
+                          <Link href={section.section.href}>
+                            {section.section.name}
                           </Link>
-                        ))}
-                      </div>
-                    ))}
-                  </HoverCardContent>
-                )}
+                          {section.items.map((item) => (
+                            <Link
+                              key={item.name}
+                              href={item.href}
+                              className="text-sm text-muted-foreground  hover:text-foreground text-[0.75rem]"
+                            >
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
+                      ))}
+                    </HoverCardContent>
+                  )}
 
-                {/* {menu.title.name === "Kids" && (
+                  {/* {menu.title.name === "Kids" && (
                   <HoverCardContent className="flex justify-center w-full flex-col pt-[3rem] pb-[2rem] border-none shadow-none">
                     <div className="flex gap-[2rem]  max-w-[1000px] mx-auto  flex-col ">
                       <Table className="table-fixed w-fit mx-auto border-separate  ">
@@ -718,18 +718,15 @@ const NavBar = () => {
                     </div>
                   </HoverCardContent>
                 )} */}
-              </HoverCard>
-            );
-          })}
+                </HoverCard>
+              );
+            })}
           </div>
-          
         </div>
-       
 
-          <div className="flex flex-row gap-[1rem] justify-center items-center ">
-            <SearchBar/>
-          </div>
-        
+        <div className="flex flex-row gap-[1rem] justify-center items-center ">
+          <SearchBar />
+        </div>
       </div>
     </Container>
   );
